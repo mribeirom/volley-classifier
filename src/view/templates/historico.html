@@ -1,0 +1,10 @@
+<H1>HISTORICO</H1>
+
+{% for usuario in usuarios %}
+    <a href="{{ url_for('controller.historico_usuario', usuario_id=usuario._id) }}">
+        <div>
+            <h3>{{ usuario.nome }}</h3>
+            <h3>{{ usuario.posicao }}</h3>
+        </div>
+    </a>
+{% endfor %}
