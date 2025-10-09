@@ -12,11 +12,15 @@ class Controller:
         # Decorador historico
         self.controller.add_url_rule('/historico', 'historico', self.historico, methods=['GET', 'POST'])
 
-        # Decorador historico usuario
+        # Decorador historico_usuario
         self.controller.add_url_rule('/historico/<usuario_id>', 'historico_usuario', self.historico_usuario, methods=['GET', 'POST'])
 
         # Decorador classificador
         self.controller.add_url_rule('/classificador', 'classificador', self.classificador, methods=['GET', 'POST'])
+
+        # Decorador resultado_usuario
+        self.controller.add_url_rule('/resultado/<usuario_id>', 'resultado_usuario', self.resultado_usuario, methods=['GET', 'POST'])
+
 
 
 
@@ -38,16 +42,22 @@ class Controller:
     def classificador(self):
         if request.method == 'POST':
             nome = request.form.get('nome')
-            peso = request.form.get('peso')
-            altura = request.form.get('altura')
-            flexibilidade = request.form.get('flexibilidade')
-            arremesso = request.form.get('arremesso')
-            s_horizontal = request.form.get('s_horizontal')
-            s_vertical = request.form.get('s_vertical')
-            posicao = 'ATACANTE'
-            self.model.registrar_usuario(nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical, posicao)
+            peso = float(request.form.get('peso'))
+            altura = float(request.form.get('altura'))
+            flexibilidade = float(request.form.get('flexibilidade'))
+            arremesso = float(request.form.get('arremesso'))
+            s_horizontal = float(request.form.get('s_horizontal'))
+            s_vertical = float(request.form.get('s_vertical'))
+
+            self.model.classificar_registrar(nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical)
             return redirect(url_for('controller.home'))
 
 
         return render_template('classificador.html')
+    
+    def resultado_usuario(self, usuario_id):
+        usuario = self.model.get_usuario(usuario_id)
+
+        return render_template('resultado_usuario', usuario=usuario)
+
 
