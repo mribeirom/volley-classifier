@@ -13,9 +13,6 @@ class Model:
 
 
         
-    def classificar_registrar(self, nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical):
-        posicao = self.classificar_posicao(peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical)
-        self.registrar_usuario(nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical, posicao)
 
     def classificar_posicao(self, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical):
 

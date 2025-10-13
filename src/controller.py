@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, session
 
 
 class Controller:
@@ -18,13 +18,10 @@ class Controller:
         # Decorador classificador
         self.controller.add_url_rule('/classificador', 'classificador', self.classificador, methods=['GET', 'POST'])
 
-        # Decorador resultado_usuario
-        self.controller.add_url_rule('/resultado/<usuario_id>', 'resultado_usuario', self.resultado_usuario, methods=['GET', 'POST'])
+        # Decorador resultado (sem parâmetro na URL)
+        self.controller.add_url_rule('/resultado', 'resultado', self.resultado, methods=['GET', 'POST'])
 
 
-
-
-    
     def home(self):
         return render_template('home.html')
     
@@ -49,15 +46,35 @@ class Controller:
             s_horizontal = float(request.form.get('s_horizontal'))
             s_vertical = float(request.form.get('s_vertical'))
 
-            self.model.classificar_registrar(nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical)
-            return redirect(url_for('controller.home'))
+
+            posicao = self.model.classificar_posicao(peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical)
+
+            self.model.registrar_usuario(nome, peso, altura, flexibilidade, arremesso, s_horizontal, s_vertical, posicao)
+
+            session['ultimo_usuario'] = {
+                'nome': nome,
+                'peso': peso,
+                'altura': altura,
+                'flexibilidade': flexibilidade,
+                'arremesso': arremesso,
+                's_horizontal': s_horizontal,
+                's_vertical': s_vertical,
+                'posicao': posicao
+            }
+
+            return redirect(url_for('controller.resultado'))
 
 
         return render_template('classificador.html')
     
-    def resultado_usuario(self, usuario_id):
-        usuario = self.model.get_usuario(usuario_id)
+    def resultado(self):
+        ultimo_usuario = session.get('ultimo_usuario')
 
-        return render_template('resultado_usuario', usuario=usuario)
+        if not ultimo_usuario:
+            return redirect(url_for('controller.classificador'))
+        
+        session.pop('ultimo_usuario', None)
 
-
+        return render_template('resultado.html', ultimo_usuario=ultimo_usuario)
+        
+    
