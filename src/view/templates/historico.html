@@ -5,6 +5,7 @@
         <div>
             <h3>{{ usuario.nome }}</h3>
             <h3>{{ usuario.posicao }}</h3>
+            <a href="{{ url_for('controller.deletar', usuario_id=usuario._id) }}"><button>DELETAR</button></a>
         </div>
     </a>
 {% endfor %}

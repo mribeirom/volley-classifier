@@ -18,8 +18,11 @@ class Controller:
         # Decorador classificador
         self.controller.add_url_rule('/classificador', 'classificador', self.classificador, methods=['GET', 'POST'])
 
-        # Decorador resultado (sem parâmetro na URL)
+        # Decorador resultado
         self.controller.add_url_rule('/resultado', 'resultado', self.resultado, methods=['GET', 'POST'])
+
+        # Decorador deletar usuario
+        self.controller.add_url_rule('/deletar/<usuario_id>', 'deletar', self.deletar, methods=['POST', 'DELETE'])
 
 
     def home(self):
@@ -76,5 +79,9 @@ class Controller:
         session.pop('ultimo_usuario', None)
 
         return render_template('resultado.html', ultimo_usuario=ultimo_usuario)
+    
+    def deletar(self, usuario_id):
+        self.model.deletar_usuario(usuario_id)
+        return redirect(url_for('controller.historico'))
         
     

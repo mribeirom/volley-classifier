@@ -47,4 +47,7 @@ class Model:
     
     def get_usuario(self, usuario_id):
         return self.usuarios.find_one({'_id': ObjectId(usuario_id)})
+    
+    def deletar_usuario(self, usuario_id):
+        self.usuarios.delete_one({'_id': ObjectId(usuario_id)})
 
