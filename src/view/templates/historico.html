@@ -1,11 +1,14 @@
 <H1>HISTORICO</H1>
 
 {% for usuario in usuarios %}
-    <a href="{{ url_for('controller.historico_usuario', usuario_id=usuario._id) }}">
-        <div>
+    <div>
+        <a href="{{ url_for('controller.historico_usuario', usuario_id=usuario._id) }}">
             <h3>{{ usuario.nome }}</h3>
             <h3>{{ usuario.posicao }}</h3>
-            <a href="{{ url_for('controller.deletar', usuario_id=usuario._id) }}"><button>DELETAR</button></a>
-        </div>
-    </a>
+        </a>
+        
+        <form method="POST" action="{{ url_for('controller.deletar', usuario_id=usuario._id) }}">
+            <button type="submit">DELETAR</button>
+        </form>
+    </div>
 {% endfor %}
