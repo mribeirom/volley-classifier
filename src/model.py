@@ -2,6 +2,8 @@ from pymongo import MongoClient
 from bson import ObjectId
 import joblib
 import pandas
+from pathlib import Path
+from knn.model_knn import ModelKNN
 
 class Model:
     def __init__(self):
@@ -9,6 +11,12 @@ class Model:
         self.data_base = self.client['volley_classifier']
         self.usuarios = self.data_base.get_collection('usuarios')
 
+        caminho_modelo = Path('knn/modelo_knn.pkl')
+        
+        if not caminho_modelo.exists():
+            self.model_knn = ModelKNN()
+            self.model_knn.treinar_modelo()
+            
         self.modelo_knn = joblib.load('knn/modelo_knn.pkl')
 
 
