@@ -49,13 +49,13 @@
                 <div class="content-right">
 
                     {% if usuario.posicao == 'ATACANTE' %}
-                        <img src="{{ url_for('static', filename='img/atacante.png') }}" alt="Resultado Classificação">
+                        <img src="{{ url_for('static', filename='img/atacante.svg') }}" alt="Resultado Classificação">
                         
                     {% elif usuario.posicao == 'LEVANTADOR' %}
-                    <img src="{{ url_for('static', filename='img/levantador.png') }}" alt="Resultado Classificação">
+                    <img src="{{ url_for('static', filename='img/levantador.svg') }}" alt="Resultado Classificação">
 
                     {% elif usuario.posicao == 'LIBERO' %}
-                    <img src="{{ url_for('static', filename='img/libero.png') }}" alt="Resultado Classificação">
+                    <img src="{{ url_for('static', filename='img/libero.svg') }}" alt="Resultado Classificação">
 
                     {% endif %}
 

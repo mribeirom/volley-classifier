@@ -23,7 +23,7 @@
     z-index: 99;
     padding: 1rem 0;
     border-bottom: var(--border);
-    background-color: rgb(255, 255, 255);
+    background-color: #f5f5f5;
 }
 
 .header section {
@@ -64,8 +64,29 @@ section {
     min-height: 100vh;
 }
 
+.classificador-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.classificador-header h1 {
+    font-size: 3.5rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.classificador-header p {
+    font-size: 1.6rem;
+    color: #666;
+    text-transform: none;
+}
+
 .home-container section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-top: 15rem;

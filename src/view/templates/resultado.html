@@ -30,20 +30,21 @@
         <section>
             <div class="content-wrapper">
                 <div class="content-left">
-                    <h3>{{ ultimo_usuario.nome }}</h3>
-                    <h3>{{ ultimo_usuario.posicao }}</h3>
+                    <h3 class="red">{{ ultimo_usuario.nome }}</h3>
+                    <h3>Você foi classificado</h3>
+                    <h3 class="red">{{ ultimo_usuario.posicao }}</h3>
                 </div>
                 
                 <div class="content-right">
 
                     {% if ultimo_usuario.posicao == 'ATACANTE' %}
-                        <img src="{{ url_for('static', filename='img/atacante.png') }}" alt="Resultado Classificação">
+                        <img src="{{ url_for('static', filename='img/atacante.svg') }}" alt="Resultado Classificação">
                         
                     {% elif ultimo_usuario.posicao == 'LEVANTADOR' %}
-                    <img src="{{ url_for('static', filename='img/levantador.png') }}" alt="Resultado Classificação">
+                    <img src="{{ url_for('static', filename='img/levantador.svg') }}" alt="Resultado Classificação">
 
                     {% elif ultimo_usuario.posicao == 'LIBERO' %}
-                    <img src="{{ url_for('static', filename='img/libero.png') }}" alt="Resultado Classificação">
+                    <img src="{{ url_for('static', filename='img/libero.svg') }}" alt="Resultado Classificação">
 
                     {% endif %}
 
