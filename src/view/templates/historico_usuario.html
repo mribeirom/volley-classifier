@@ -1,7 +1,72 @@
-<h3>{{ usuario.nome }}</h3>
-<h3>{{ usuario.peso }}</h3>
-<h3>{{ usuario.altura }}</h3>
-<h3>{{ usuario.flexibilidade }}</h3>
-<h3>{{ usuario.arremesso }}</h3>
-<h3>{{ usuario.s_horizontal }}</h3>
-<h3>{{ usuario.s_vertical }}</h3>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volley-Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/historico_usuario.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <section>
+
+            <a class="icone" href="{{ url_for('controller.home') }}">Volley-Classifier</a>
+
+            <nav class="navbar">
+                <a href="{{ url_for('controller.classificador') }}">Classificador</a>
+                <a href="{{ url_for('controller.historico') }}">Histórico</a>
+            </nav>
+
+        </section>
+    </header>
+
+    <div class="home-container">
+        <section>
+            <div class="content-wrapper">
+                <div class="content-left">
+                    <h1>NOME</h1>
+                    <p>{{ usuario.nome }}</p>
+                    <h1>PESO</h1>
+                    <p>{{ usuario.peso }}</p>
+                    <h1>ALTURA</h1>
+                    <p>{{ usuario.altura }}</p>
+                    <h1>FLEXIBILIDADE</h1>
+                    <p>{{ usuario.flexibilidade }}</p>
+                    <h1>ARREMESSO</h1>
+                    <p>{{ usuario.arremesso }}</p>
+                    <h1>SALTO HORIZONTAL</h1>
+                    <p>{{ usuario.s_horizontal }}</p>
+                    <h1>SALTO VERTICAL</h1>
+                    <p>{{ usuario.s_vertical }}</p>
+                </div>
+                
+                <div class="content-right">
+
+                    {% if usuario.posicao == 'ATACANTE' %}
+                        <img src="{{ url_for('static', filename='img/atacante.png') }}" alt="Resultado Classificação">
+                        
+                    {% elif usuario.posicao == 'LEVANTADOR' %}
+                    <img src="{{ url_for('static', filename='img/levantador.png') }}" alt="Resultado Classificação">
+
+                    {% elif usuario.posicao == 'LIBERO' %}
+                    <img src="{{ url_for('static', filename='img/libero.png') }}" alt="Resultado Classificação">
+
+                    {% endif %}
+
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
+
+

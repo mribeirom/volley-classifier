@@ -1,95 +1,84 @@
-<form method="POST">
-      <div>
-        <label for="nome">NOME DO USUÁRIO:</label>
-        <input
-          type="text"
-          name="nome"
-          id="nome"
-          placeholder="digite seu nome completo"
-          required
-        />
-      </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-      <div>
-        <div>
-          <label for="peso">PESO (kg):</label>
-          <input
-            type="number"
-            name="peso"
-            id="peso"
-            placeholder="ex: 70"
-            step="0.1"
-            min="0"
-            required
-          />
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volley-Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/classificador.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
 
-        <div>
-          <label for="altura">ALTURA (cm):</label>
-          <input
-            type="number"
-            name="altura"
-            id="altura"
-            placeholder="ex: 175"
-            step="0.1"
-            min="0"
-            required
-          />
-        </div>
-      </div>
+<body>
+  <header class="header">
+    <section>
 
-      <div>
-        <label for="flexibilidade">FLEXIBILIDADE (cm):</label>
-        <input
-          type="number"
-          name="flexibilidade"
-          id="flexibilidade"
-          placeholder="medida do teste de sentar e alcançar"
-          step="0.1"
-          required
-        />
-      </div>
+      <a class="icone" href="{{ url_for('controller.home') }}">Volley-Classifier</a>
 
-      <div>
-        <label for="arremesso">ARREMESSO (metros):</label>
-        <input
-          type="number"
-          name="arremesso"
-          id="arremesso"
-          placeholder="distância do arremesso"
-          step="0.1"
-          min="0"
-          required
-        />
-      </div>
+      <nav class="navbar">
+        <a href="{{ url_for('controller.classificador') }}">Classificador</a>
+        <a href="{{ url_for('controller.historico') }}">Histórico</a>
+      </nav>
 
-      <div>
-        <label for="s_horizontal">SALTO HORIZONTAL (cm):</label>
-        <input
-          type="number"
-          name="s_horizontal"
-          id="s_horizontal"
-          placeholder="distância do salto horizontal"
-          step="0.1"
-          min="0"
-          required
-        />
-      </div>
+    </section>
+  </header>
 
-      <div>
-        <label for="s_vertical">SALTO VERTICAL (cm):</label>
-        <input
-          type="number"
-          name="s_vertical"
-          id="s_vertical"
-          placeholder="altura do salto vertical"
-          step="0.1"
-          min="0"
-          required
-        />
-      </div>
+  <div class="home-container">
+    <section>
+      <div class="content-wrapper">
+        <form method="POST">
+          <div>
+            <label for="nome">NOME DO USUÁRIO:</label>
+            <input type="text" name="nome" id="nome" placeholder="digite seu nome completo" required />
+          </div>
 
-      <div>
-        <button type="submit">CLASSIFICAR</button>
+          <div>
+            <div>
+              <label for="peso">PESO (kg):</label>
+              <input type="number" name="peso" id="peso" placeholder="ex: 70" step="0.1" min="0" required />
+            </div>
+
+            <div>
+              <label for="altura">ALTURA (cm):</label>
+              <input type="number" name="altura" id="altura" placeholder="ex: 175" step="0.1" min="0" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="flexibilidade">FLEXIBILIDADE (cm):</label>
+            <input type="number" name="flexibilidade" id="flexibilidade"
+              placeholder="medida do teste de sentar e alcançar" step="0.1" required />
+          </div>
+
+          <div>
+            <label for="arremesso">ARREMESSO (metros):</label>
+            <input type="number" name="arremesso" id="arremesso" placeholder="distância do arremesso" step="0.1" min="0"
+              required />
+          </div>
+
+          <div>
+            <label for="s_horizontal">SALTO HORIZONTAL (cm):</label>
+            <input type="number" name="s_horizontal" id="s_horizontal" placeholder="distância do salto horizontal"
+              step="0.1" min="0" required />
+          </div>
+
+          <div>
+            <label for="s_vertical">SALTO VERTICAL (cm):</label>
+            <input type="number" name="s_vertical" id="s_vertical" placeholder="altura do salto vertical" step="0.1"
+              min="0" required />
+          </div>
+
+          <div>
+            <button type="submit">CLASSIFICAR</button>
+          </div>
+        </form>
       </div>
-    </form>
+    </section>
+  </div>
+
+</body>
+
+</html>

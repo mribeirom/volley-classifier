@@ -1,5 +1,58 @@
-<h3>{{ ultimo_usuario.nome }}</h3>
-<h3>{{ ultimo_usuario.posicao }}</h3>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<a href="{{ url_for('controller.home') }}"><button>MENU</button></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volley-Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultado.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
 
+<body>
+    <header class="header">
+        <section>
+
+            <a class="icone" href="{{ url_for('controller.home') }}">Volley-Classifier</a>
+
+            <nav class="navbar">
+                <a href="{{ url_for('controller.classificador') }}">Classificador</a>
+                <a href="{{ url_for('controller.historico') }}">Histórico</a>
+            </nav>
+
+        </section>
+    </header>
+
+    <div class="home-container">
+        <section>
+            <div class="content-wrapper">
+                <div class="content-left">
+                    <h3>{{ ultimo_usuario.nome }}</h3>
+                    <h3>{{ ultimo_usuario.posicao }}</h3>
+                </div>
+                
+                <div class="content-right">
+
+                    {% if ultimo_usuario.posicao == 'ATACANTE' %}
+                        <img src="{{ url_for('static', filename='img/atacante.png') }}" alt="Resultado Classificação">
+                        
+                    {% elif ultimo_usuario.posicao == 'LEVANTADOR' %}
+                    <img src="{{ url_for('static', filename='img/levantador.png') }}" alt="Resultado Classificação">
+
+                    {% elif ultimo_usuario.posicao == 'LIBERO' %}
+                    <img src="{{ url_for('static', filename='img/libero.png') }}" alt="Resultado Classificação">
+
+                    {% endif %}
+
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+:root {
+    --border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+    font-family: "Roboto", sans-serif;
+}
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    padding: 1rem 0;
+    border-bottom: var(--border);
+    background-color: rgb(255, 255, 255);
+}
+
+.header section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.icone {
+    margin: 0 1rem;
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+}
+
+section {
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.navbar a {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+.navbar a:hover {
+    color: #F44336;
+    border-bottom: 0.1rem solid burlywood;
+    padding-bottom: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.home-container {
+    background-color: rgb(255, 255, 255);
+}
+
+.home-container section {
+    display: flex;
+    align-items: center;
+    padding-top: 15rem;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.content-left {
+    flex: 1;
+    color: white;
+}
+
+.content-left h3 {
+    font-size: 3.7rem;
+    line-height: 1.4;
+    margin: 0 auto;
+    color: #F44336;
+}
+
+.content-left p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-right img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .content-left h3 {
+        font-size: 2.5rem;
+    }
+    
+    .content-right img {
+        max-width: 100%;
+    }
+}

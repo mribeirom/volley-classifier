@@ -1,3 +1,45 @@
-<a href="{{ url_for('controller.historico') }}">HISTORICO</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<a href="{{ url_for('controller.classificador') }}">CLASSIFICADOR</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volley-Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <section>
+
+            <a class="icone" href="{{ url_for('controller.home') }}">Volley-Classifier</a>
+
+            <nav class="navbar">
+                <a href="{{ url_for('controller.classificador') }}">Classificador</a>
+                <a href="{{ url_for('controller.historico') }}">Histórico</a>
+            </nav>
+
+        </section>
+    </header>
+
+    <div class="home-container">
+        <section>
+            <div class="content-wrapper">
+                <div class="content-left">
+                    <h3>CLASSIFICAÇÃO INTELIGENTE PARA JOGADORES QUE QUEREM EVOLUIR NO ESPORTE!</h3>
+                </div>
+                
+                <div class="content-right">
+                    <img src="{{ url_for('static', filename='img/home-container.png') }}" alt="Jogador de Vôlei">
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
